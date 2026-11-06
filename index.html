@@ -26,6 +26,12 @@
       white-space: pre; tab-size: 2;
     }
     .hint { margin: 16px 2px 0; color: #56616b; font-size: 11px; }
+    .easter-egg { position: fixed; left: 17px; top: 47%; width: 13px; height: 13px; padding: 0; border: 0; background: #000; opacity: .96; cursor: pointer; }
+    .clue-panel { display: none; margin-top: 18px; border: 1px solid #34414b; padding: 18px; background: #07090c; }
+    .clue-panel.visible { display: block; }
+    .clue-panel h2 { margin: 0 0 12px; color: #d7dde3; font-size: 14px; font-weight: 500; }
+    .clue-panel p { color: #aab4bd; font-size: 12px; line-height: 1.7; }
+    .cipher { white-space: pre-wrap; overflow-wrap: anywhere; color: #8996a1; font-size: 11px; line-height: 1.8; }
     .gate { margin-top: 34px; border: 1px solid #28313a; padding: 20px; background: #0b0f13; }
     .gate label { display: block; color: #aab4bd; font-size: 12px; margin-bottom: 12px; letter-spacing: .08em; }
     .controls { display: flex; gap: 10px; }
@@ -71,6 +77,12 @@
       <p id="message" role="status" aria-live="polite"></p>
     </section>
     <footer>ARCHIVE SYSTEM // LOCAL TRANSCRIPTION COPY</footer>
+    <button class="easter-egg" id="hidden-square" type="button" aria-label=" "></button>
+    <section class="clue-panel" id="clue-panel" aria-live="polite">
+      <h2>CLUE 1</h2>
+      <p>this ones ez after that you might want to use smth like a base...... translator or hex or binary</p>
+      <p class="cipher" id="cipher-text"></p>
+    </section>
   </main>
 
   <script>
