@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080a0d">
+  <title>ARCHIVE // FRAGMENT 001</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: #080a0d; color: #b8c0c8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    main { width: min(100% - 32px, 920px); margin: 0 auto; padding: 48px 0 56px; }
+    header { border-bottom: 1px solid #28313a; padding-bottom: 18px; margin-bottom: 24px; }
+    .eyebrow { color: #73808c; font-size: 11px; letter-spacing: .2em; }
+    h1 { color: #d7dde3; font-size: clamp(20px, 4vw, 29px); font-weight: 500; letter-spacing: .08em; margin: 12px 0 8px; }
+    .sub { color: #74808b; font-size: 12px; }
+    .paper {
+      overflow-x: auto; border: 1px solid #202a32; background: #0b0f13;
+      padding: 18px 16px; box-shadow: 0 18px 60px #0008;
+    }
+    pre {
+      margin: 0; color: #8d99a3; font-size: 12px; line-height: 1.75;
+      white-space: pre; tab-size: 2;
+    }
+    .hint { margin: 16px 2px 0; color: #56616b; font-size: 11px; }
+    .gate { margin-top: 34px; border: 1px solid #28313a; padding: 20px; background: #0b0f13; }
+    .gate label { display: block; color: #aab4bd; font-size: 12px; margin-bottom: 12px; letter-spacing: .08em; }
+    .controls { display: flex; gap: 10px; }
+    input {
+      min-width: 0; flex: 1; padding: 13px 14px; border: 1px solid #34414b;
+      background: #07090c; color: #e1e7ec; font: inherit; font-size: 13px; outline: none;
+    }
+    input:focus { border-color: #8297a8; }
+    button {
+      border: 1px solid #607383; background: #1b2832; color: #e0e8ee;
+      padding: 0 20px; font: inherit; font-size: 12px; letter-spacing: .1em; cursor: pointer;
+    }
+    button:hover { background: #263845; }
+    #message { min-height: 16px; margin: 12px 0 0; color: #8996a1; font-size: 11px; }
+    footer { margin-top: 28px; color: #3f4a53; font-size: 10px; letter-spacing: .12em; }
+    @media (max-width: 520px) {
+      main { padding-top: 28px; }
+      .controls { flex-direction: column; }
+      button { min-height: 44px; }
+      pre { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">RECORD 001 / RECOVERED TEXT</div>
+      <h1>THE UNINDEXED ARCHIVE</h1>
+      <div class="sub">Transcription incomplete. Origin and author unknown.</div>
+    </header>
+
+    <section class="paper" aria-label="Recovered manuscript">
+      <pre id="manuscript"></pre>
+    </section>
+    <p class="hint">The document appears damaged. No reliable index was recovered.</p>
+
+    <section class="gate">
+      <label for="answer">DESTINATION / ENTER THE RECOVERED ADDRESS</label>
+      <form class="controls" id="gate-form">
+        <input id="answer" name="answer" type="text" autocomplete="off" spellcheck="false" placeholder="Enter the address..." aria-label="Recovered address">
+        <button type="submit">CONFIRM</button>
+      </form>
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+    <footer>ARCHIVE SYSTEM // LOCAL TRANSCRIPTION COPY</footer>
+  </main>
+
+  <script>
+    // The first character of each line, read from top to bottom,
+    // spells the destination hostname exactly.
+    const destination = "iwannapoop676767.up.railway.app";
+    const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+    let seed = 19471023;
+
+    function randomChar() {
+      seed = (seed * 16807) % 2147483647;
+      return alphabet[seed % alphabet.length];
+    }
+
+    const lines = Array.from(destination, (first) => {
+      let noise = "";
+      for (let i = 0; i < 67; i++) noise += randomChar();
+      return first + noise;
+    });
+
+    document.getElementById("manuscript").textContent = lines.join("\n");
+
+    document.getElementById("gate-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const entered = document.getElementById("answer").value.trim()
+        .replace(/^https?:\/\//i, "").replace(/\/$/, "");
+      const message = document.getElementById("message");
+
+      if (entered.toLowerCase() === destination) {
+        message.textContent = "ADDRESS ACCEPTED. OPENING DESTINATION...";
+        window.location.assign("https://" + destination);
+      } else {
+        message.textContent = "ADDRESS NOT RECOGNIZED.";
+      }
+    });
+  </script>
+</body>
+</html>
