@@ -3,50 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080a0d">
+  <meta name="theme-color" content="#ffffff">
   <title>ARCHIVE // FRAGMENT 001</title>
   <style>
-    :root { color-scheme: dark; }
+    :root { color-scheme: light; }
     * { box-sizing: border-box; }
     body {
-      margin: 0; min-height: 100vh; background: #080a0d; color: #b8c0c8;
+      margin: 0; min-height: 100vh; background: #ffffff; color: #222222;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
     main { width: min(100% - 32px, 920px); margin: 0 auto; padding: 48px 0 56px; }
-    header { border-bottom: 1px solid #28313a; padding-bottom: 18px; margin-bottom: 24px; }
-    .eyebrow { color: #73808c; font-size: 11px; letter-spacing: .2em; }
-    h1 { color: #d7dde3; font-size: clamp(20px, 4vw, 29px); font-weight: 500; letter-spacing: .08em; margin: 12px 0 8px; }
-    .sub { color: #74808b; font-size: 12px; }
+    header { border-bottom: 1px solid #dddddd; padding-bottom: 18px; margin-bottom: 24px; }
+    .eyebrow { color: #666666; font-size: 11px; letter-spacing: .2em; }
+    h1 { color: #111111; font-size: clamp(20px, 4vw, 29px); font-weight: 500; letter-spacing: .08em; margin: 12px 0 8px; }
+    .sub { color: #666666; font-size: 12px; }
     .paper {
-      overflow-x: auto; border: 1px solid #202a32; background: #0b0f13;
+      overflow-x: auto; border: 1px solid #dddddd; background: #f7f7f7;
       padding: 18px 16px; box-shadow: 0 18px 60px #0008;
     }
     pre {
-      margin: 0; color: #8d99a3; font-size: 12px; line-height: 1.75;
+      margin: 0; color: #333333; font-size: 12px; line-height: 1.75;
       white-space: pre; tab-size: 2;
     }
-    .hint { margin: 16px 2px 0; color: #56616b; font-size: 11px; }
-    .easter-egg { position: fixed; left: 17px; top: 47%; width: 13px; height: 13px; padding: 0; border: 0; background: #000; opacity: .96; cursor: pointer; }
-    .clue-panel { display: none; margin-top: 18px; border: 1px solid #34414b; padding: 18px; background: #07090c; }
+    .hint { margin: 16px 2px 0; color: #666666; font-size: 11px; }
+    .easter-egg { position: fixed; left: 17px; top: 47%; width: 13px; height: 13px; padding: 0; border: 0; background: #000000; opacity: 1; cursor: pointer; }
+    .clue-panel { display: none; margin-top: 18px; border: 1px solid #cccccc; padding: 18px; background: #ffffff; }
     .clue-panel.visible { display: block; }
-    .clue-panel h2 { margin: 0 0 12px; color: #d7dde3; font-size: 14px; font-weight: 500; }
-    .clue-panel p { color: #aab4bd; font-size: 12px; line-height: 1.7; }
-    .cipher { white-space: pre-wrap; overflow-wrap: anywhere; color: #8996a1; font-size: 11px; line-height: 1.8; }
-    .gate { margin-top: 34px; border: 1px solid #28313a; padding: 20px; background: #0b0f13; }
-    .gate label { display: block; color: #aab4bd; font-size: 12px; margin-bottom: 12px; letter-spacing: .08em; }
+    .clue-panel h2 { margin: 0 0 12px; color: #111111; font-size: 14px; font-weight: 500; }
+    .clue-panel p { color: #333333; font-size: 12px; line-height: 1.7; }
+    .cipher { white-space: pre-wrap; overflow-wrap: anywhere; color: #333333; font-size: 11px; line-height: 1.8; }
+    .gate { margin-top: 34px; border: 1px solid #dddddd; padding: 20px; background: #f7f7f7; }
+    .gate label { display: block; color: #333333; font-size: 12px; margin-bottom: 12px; letter-spacing: .08em; }
     .controls { display: flex; gap: 10px; }
     input {
       min-width: 0; flex: 1; padding: 13px 14px; border: 1px solid #34414b;
       background: #07090c; color: #e1e7ec; font: inherit; font-size: 13px; outline: none;
     }
-    input:focus { border-color: #8297a8; }
+    input:focus { border-color: #555555; }
     button {
-      border: 1px solid #607383; background: #1b2832; color: #e0e8ee;
+      border: 1px solid #111111; background: #111111; color: #ffffff;
       padding: 0 20px; font: inherit; font-size: 12px; letter-spacing: .1em; cursor: pointer;
     }
-    button:hover { background: #263845; }
-    #message { min-height: 16px; margin: 12px 0 0; color: #8996a1; font-size: 11px; }
-    footer { margin-top: 28px; color: #3f4a53; font-size: 10px; letter-spacing: .12em; }
+    button:hover { background: #333333; }
+    #message { min-height: 16px; margin: 12px 0 0; color: #555555; font-size: 11px; }
+    footer { margin-top: 28px; color: #777777; font-size: 10px; letter-spacing: .12em; }
     @media (max-width: 520px) {
       main { padding-top: 28px; }
       .controls { flex-direction: column; }
