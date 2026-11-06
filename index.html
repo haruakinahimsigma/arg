@@ -36,8 +36,8 @@
     .gate label { display: block; color: #333333; font-size: 12px; margin-bottom: 12px; letter-spacing: .08em; }
     .controls { display: flex; gap: 10px; }
     input {
-      min-width: 0; flex: 1; padding: 13px 14px; border: 1px solid #34414b;
-      background: #07090c; color: #e1e7ec; font: inherit; font-size: 13px; outline: none;
+      min-width: 0; flex: 1; padding: 13px 14px; border: 1px solid #cccccc;
+      background: #ffffff; color: #222222; font: inherit; font-size: 13px; outline: none;
     }
     input:focus { border-color: #555555; }
     button {
@@ -68,6 +68,12 @@
     </section>
     <p class="hint">The document appears damaged. No reliable index was recovered.</p>
 
+    <section class="clue-panel" id="clue-panel" aria-live="polite">
+      <h2>CLUE 1</h2>
+      <p>this ones ez after that you might want to use smth like a base...... translator or hex or binary</p>
+      <p class="cipher" id="cipher-text"></p>
+    </section>
+
     <section class="gate">
       <label for="answer">DESTINATION / ENTER THE RECOVERED ADDRESS</label>
       <form class="controls" id="gate-form">
@@ -77,12 +83,7 @@
       <p id="message" role="status" aria-live="polite"></p>
     </section>
     <footer>ARCHIVE SYSTEM // LOCAL TRANSCRIPTION COPY</footer>
-    <button class="easter-egg" id="hidden-square" type="button" aria-label=" "></button>
-    <section class="clue-panel" id="clue-panel" aria-live="polite">
-      <h2>CLUE 1</h2>
-      <p>this ones ez after that you might want to use smth like a base...... translator or hex or binary</p>
-      <p class="cipher" id="cipher-text"></p>
-    </section>
+    <button class="easter-egg" id="hidden-square" type="button" aria-label="Reveal clue 1"></button>
   </main>
 
   <script>
@@ -104,6 +105,15 @@
     });
 
     document.getElementById("manuscript").textContent = lines.join("\n");
+
+    const hiddenSquare = document.getElementById("hidden-square");
+    const cluePanel = document.getElementById("clue-panel");
+    hiddenSquare.addEventListener("click", () => {
+      cluePanel.classList.toggle("visible");
+      if (cluePanel.classList.contains("visible")) {
+        cluePanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
 
     document.getElementById("gate-form").addEventListener("submit", (event) => {
       event.preventDefault();
